@@ -31,6 +31,7 @@ ul.rig li {
 	display: inline-block;
 	background: #666;
     font-size: 16px;
+    text-align: center;
 
 	box-sizing: border-box;
 	-moz-box-sizing: border-box;
@@ -71,14 +72,17 @@ ul.rig li img {
 }
 
 
-label { display: inline-block; width: 100px; text-align: left; }
+label { 
+    display: inline-block; 
+    width: 100px; 
+    text-align: left; 
+}
 
 input[type=submit] {
-    height: 2em;
-    width: 4em;
+    height: 1.5em;
+    width: 7.5em;
     background: #111;
     color: #FFFFFF;
-    float: bottom;
 }
 
 input[type=submit], input[type=text] {

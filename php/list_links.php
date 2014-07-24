@@ -5,7 +5,8 @@ function echoHTMLLinks($saved_links)
 {
     foreach ($saved_links as $link)
     {
-        echo li_fy(href($link["url"], imgHTML($link["img"])));
+        $img = img_pathify($link["img"]);
+        echo li_fy(href($link["url"], imgHTML($img)));
     }
 }
 $db = new LinkDB();

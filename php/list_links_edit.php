@@ -1,6 +1,12 @@
 <?php
 require_once("dbtalk.php");
 require_once("utils.php");
+function inputLabel($value, $var_name, $color="red")
+{
+    return " 
+            <label for='$var_name'>$var_name:</label>
+            <input id='$var_name' type='text' value=$value name='$var_name'>";
+}
 function createInput($url, $title, $img, $id, $arrange)
 {
     if(empty($url))
@@ -14,24 +20,18 @@ function createInput($url, $title, $img, $id, $arrange)
     return 
         "<br>
         <form action='php/sql_upd_link.php' method='post'>
-            <input type='hidden' value=$id name='id'> 
-            <label for='arrange'>arrange:</label>
-            <input id='arrange' type='text' value=$arrange name='arrange'>
-            <label for='title'>title:</label>
-            <input id='title'type='text' value=$title name='title'>
-            <label for='url'>url:</label>
-            <input id='url' type='text' value=$url name='url'>
-            <label for='imgurl'>imgurl:</label>
-            <input id='imgurl' type='text' value=$img name='img'>
-            <input type='submit' value='update' size='5'>
+            <input type='hidden' value=$id name='id'> "
+            . inputLabel($arrange, "arrange") . inputLabel($title, "title") . inputLabel($url, "url") . inputLabel($img, "img") .
+            "<input type='submit' value='update' size='5'>
         </form>";
 }
 
-function createDelete($id)
+function createDelete($id, $img)
 {
     return 
         "<form action='php/sql_dlt_link.php' method='post'>
             <input type='hidden' value=$id readonly name='id'>
+            <input type='hidden' value=$img readonly name='img'>
             <input type='submit' value='delete'>
         </form>";
 }
@@ -39,7 +39,7 @@ function echoHTMLLinks($saved_links)
 {
     foreach ($saved_links as $link)
     {
-        echo li_fy(createInput($link["url"], $link["title"], $link["img"], $link["id"], $link["arrange"]) . createDelete($link["id"]));
+        echo li_fy(createInput($link["url"], $link["title"], $link["img"], $link["id"], $link["arrange"]) . createDelete($link["id"], $link["img"]));
     }
 }
 $db = new LinkDB();
