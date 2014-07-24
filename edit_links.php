@@ -5,12 +5,21 @@
     <title>(EDIT)</title>
 </head>
 <body>
+    <h1>*___*</h1>
     <?php include("php/list_links_edit.php"); ?>
-    <?php include("php/add_link.php"); ?>
-    <ul class="grid-nav">
-        <li>
-            <a href="index.php">back</a>
-        </li>
+    <ul class="btm">
+        <form action="php/sql_new_link.php" method="post">
+            <li>
+                arrange NO.:<input type="text" name="arrange">
+                title:<input type="text" name="title">
+                url:<input type="text" name="url">
+                imgurl:<input type="text" name="img">
+                <input type="submit" value="new link">
+            </li>
+        </form>
+        <form action="index.php">
+            <input type="submit" value="Back">
+        </form>
     </ul>
 </body>
 </html>

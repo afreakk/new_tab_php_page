@@ -5,11 +5,12 @@
     <title>(NEW)</title>
 </head>
 <body>
+    <h1>*___*</h1>
     <?php include("php/list_links.php"); ?>
-    <ul class="grid-nav">
-        <li>
-            <a href="edit_links.php">edit</a>
-        </li>
+    <ul class="btm">
+        <form action="edit_links.php">
+            <input type="submit" value="Edit">
+        </form>
     </ul>
 </body>
 </html>

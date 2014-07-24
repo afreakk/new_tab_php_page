@@ -2,6 +2,7 @@
 Class LinkDB
 {
     private $dbHandle;
+
     public function __construct()
     {
         $this->dbHandle = new PDO("sqlite:/var/databases/newtab/newtab.sqlite");
@@ -26,6 +27,7 @@ Class LinkDB
         $result = $this->dbHandle->exec("INSERT INTO links (title,url,img,arrange) VALUES ('$title','$url','$img','$arrange')");
         $this->error_handle($result);
     }
+
     private function error_handle($result)
     {
         if (!$result)

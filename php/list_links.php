@@ -11,12 +11,8 @@ function echoHTMLLinks($saved_links)
 $db = new LinkDB();
 $saved_links = $db->get_ordered();
 ?>
-
-<div class="wrapper">
-	<div class="container">
-		<h1>*___*</h1>
-			<ul class="rig columns-4">
-                <?php echoHTMLLinks($saved_links); ?>
-			</ul>
-	</div>
+<div class="container">
+    <ul class="rig">
+        <?php echoHTMLLinks($saved_links); ?>
+    </ul>
 </div>

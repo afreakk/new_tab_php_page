@@ -12,13 +12,18 @@ function createInput($url, $title, $img, $id, $arrange)
     if(empty($arrange))
         $arrange = "0";
     return 
-        "<form action='php/sql_upd_link.php' method='post'>
+        "<br>
+        <form action='php/sql_upd_link.php' method='post'>
             <input type='hidden' value=$id name='id'> 
-            arrange:<input type='text' value=$arrange name='arrange'> <br>
-            title:<input type='text' value=$title name='title'> <br>
-            url:<input type='text' value=$url name='url'> <br>
-            imgurl:<input type='text' value=$img name='img'>
-            <input type='submit' value='update'>
+            <label for='arrange'>arrange:</label>
+            <input id='arrange' type='text' value=$arrange name='arrange'>
+            <label for='title'>title:</label>
+            <input id='title'type='text' value=$title name='title'>
+            <label for='url'>url:</label>
+            <input id='url' type='text' value=$url name='url'>
+            <label for='imgurl'>imgurl:</label>
+            <input id='imgurl' type='text' value=$img name='img'>
+            <input type='submit' value='update' size='5'>
         </form>";
 }
 
@@ -40,12 +45,8 @@ function echoHTMLLinks($saved_links)
 $db = new LinkDB();
 $saved_links = $db->get_ordered();
 ?>
-
-<div class="wrapper">
-	<div class="container">
-		<h1>*___*</h1>
-			<ul class="rig columns-4">
-                <?php echoHTMLLinks($saved_links); ?>
-			</ul>
-	</div>
+<div class="container">
+    <ul class="rig">
+        <?php echoHTMLLinks($saved_links); ?>
+    </ul>
 </div>
