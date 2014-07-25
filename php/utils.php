@@ -1,9 +1,4 @@
 <?php
-/*
- *
- * TODO: sql image update = diskleak, not deleting old image when setting new image, only deletes img when deleteting whole link
- *
- */
 function clean_str($string)
 {
    $string = str_replace(' ', '-', $string); 
@@ -45,4 +40,10 @@ function removeCache($img, $phpfolder=TRUE)
     {
         unlink($local_img);
     }
+}
+function update_img($id, $img, $db)
+{
+    $old_img = $db->get_img_url($id);
+    removeCache($old_img, TRUE);
+    cache_img($img, TRUE);
 }

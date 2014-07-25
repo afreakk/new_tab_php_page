@@ -6,7 +6,9 @@ $title = $_POST["title"];
 $url = $_POST["url"];
 $img = $_POST["img"];
 $arrange = $_POST["arrange"];
+
 $db = new LinkDB();
-cache_img($img, TRUE);
+update_img($id, $img, $db);
 $db->update_link($title, $url, $img, $id, $arrange);
+
 header("Location: ../edit_links.php");

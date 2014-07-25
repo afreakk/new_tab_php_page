@@ -27,7 +27,11 @@ Class LinkDB
         $result = $this->dbHandle->exec("INSERT INTO links (title,url,img,arrange) VALUES ('$title','$url','$img','$arrange')");
         $this->error_handle($result);
     }
-
+    public function get_img_url($id)
+    {
+        $result = $this->dbHandle->query("SELECT img FROM links WHERE id = '$id'");
+        return $result->fetchAll()[0][0];
+    }
     private function error_handle($result)
     {
         if (!$result)
